@@ -16,9 +16,11 @@ import java.util.Random;
 public class Grupo {
     private LinkedList<Integer> grupoAtual = new LinkedList<Integer>();
     private LinkedList<Integer> melhorGrupo = new LinkedList<Integer>();
+    private int n;
     
-    public Grupo(){
-        for (int i = 0; i < 58; i++) {
+    public Grupo(int n){
+        this.n = n;
+        for (int i = 0; i < n; i++) {
             this.grupoAtual.add(i);
             this.melhorGrupo.add(i);
             
@@ -27,11 +29,11 @@ public class Grupo {
     
     public void swap(){
         Random r = new Random();
-        int i = r.nextInt(58);
-        int j = r.nextInt(58);
+        int i = r.nextInt(n);
+        int j = r.nextInt(n);
         
         while (i == j) {
-            j = r.nextInt(58);
+            j = r.nextInt(n);
         }
         int aux = grupoAtual.get(i);
         this.grupoAtual.set(i, grupoAtual.get(j));
@@ -40,11 +42,11 @@ public class Grupo {
     
     public void insertion(){
         Random r = new Random();
-        int i = r.nextInt(58);
-        int j = r.nextInt(58);       
+        int i = r.nextInt(n);
+        int j = r.nextInt(n);       
         
         while (i == j) {
-            j = r.nextInt(58);
+            j = r.nextInt(n);
         }
         
         int aux = this.grupoAtual.get(i);
@@ -55,11 +57,11 @@ public class Grupo {
     public void inversion(){
         LinkedList<Integer> inv = new LinkedList<Integer>();
         Random r = new Random();
-        int i = r.nextInt(58);
-        int j = r.nextInt(58);
+        int i = r.nextInt(n);
+        int j = r.nextInt(n);
         
         while (i == j) {
-            j = r.nextInt(58);
+            j = r.nextInt(n);
         }
         
         if (j < i) {
@@ -83,11 +85,11 @@ public class Grupo {
     public void shuffle(){
         LinkedList<Integer> inv = new LinkedList<Integer>();
         Random r = new Random();
-        int i = r.nextInt(58);
-        int j = r.nextInt(58);
+        int i = r.nextInt(n);
+        int j = r.nextInt(n);
         
         while (i == j) {
-            j = r.nextInt(58);
+            j = r.nextInt(n);
         }
         
         if (j < i) {
@@ -149,13 +151,13 @@ public class Grupo {
         for (int i = 0; i < g.size() - 1; i++) {
             pont = pont + Grafo.mat[g.get(i)][g.get(i+1)];
         }
-        pont = pont + Grafo.mat[g.get(57)][g.get(0)];
+        pont = pont + Grafo.mat[g.get(n-1)][g.get(0)];
         return pont;
     }
     
     public void printGrupo(LinkedList<Integer> g){
         String s = "[";
-        for (int i = 0; i < 58; i++) {
+        for (int i = 0; i < n; i++) {
             s = s + " " + g.get(i);
         }
         s = s + "]";

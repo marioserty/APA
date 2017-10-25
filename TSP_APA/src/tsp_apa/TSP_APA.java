@@ -29,7 +29,7 @@ public class TSP_APA {
         int[] sd = new int[100];
             
         for(int x = 0; x < 100; x++){
-            Grupo g = new Grupo();
+            Grupo g = new Grupo(58);
             for (int i = 0; i < 300_000; i++) {                
                 g.random();
                 if (g.pontuacao(g.getGrupoAtual()) < g.pontuacao(g.getMelhorGrupo())) {
